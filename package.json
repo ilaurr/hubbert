@@ -19,6 +19,7 @@
     "popper.js": "^1.14.3",
     "vue": "^2.5.16",
     "vue-bootstrap-slider": "^1.2.0",
+    "vue-circle-choice": "0.0.5",
     "vueify": "^9.4.1"
   }
 }

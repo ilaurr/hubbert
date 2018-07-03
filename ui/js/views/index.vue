@@ -1,88 +1,75 @@
 <template>
     <div>
         Hello!!!!
+        <button v-on:click="selectedRoom='Living'">Living</button>
+        <button v-on:click="selectedRoom='Bedroom'">Bedroom</button>
+        <button v-on:click="selectedRoom='Bathroom'">Bathroom</button>
+        <button v-on:click="selectedRoom='Kitchen'">Kitchen</button>
+        <button v-on:click="selectedRoom='Hallway'">Hallway</button>
         <div>
-            Room: Living 1
-        </div>
-        <div>
-            Room: Bedroom 2
-        </div>
-        <div>
-            Room: Bathroom 3
-        </div>
-        <div>
-            Room: Kitchen 4
-        </div>
-        <div>
-            Room: Hallway 7
-        </div>
-        <div>
-            Living
             <div>
-                All 1
-                Living Couch Strip 7
-                Living TV Strip 8
-                Living 1 10
-                Living 2 12
+                Living
+                <div>
+                    <button v-on:click="selected(1,'groups')">All Living</button>
+                    <button v-on:click="selected(7,'lights')">Living Couch Strip</button>
+                    <button v-on:click="selected(8,'lights')">Living TV Strip</button>
+                    <button v-on:click="selected(10,'lights')">Living 1</button>
+                    <button v-on:click="selected(12,'lights')">Living 2</button>
+                </div>
             </div>
             Bedroom
             <div>
-                All 2
-                Bed 1 4
+                <button v-on:click="selected(2,'groups')">All Bedroom</button>
+                <button v-on:click="selected(4,'lights')">Bed 1</button>
             </div>
             Bathroom
             <div>
-                All 3
-                Bath 1 5
+                <button v-on:click="selected(3,'groups')">All Bathroom</button>
+                <button v-on:click="selected(5,'lights')">Bath 1</button>
             </div>
             Kitchen
             <div>
-                All 4
-                Kitchen 1 9
+                <button v-on:click="selected(4,'groups')">All Kitchen</button>
+                <button v-on:click="selected(9,'lights')">Kitchen 1</button>
             </div>
             Hallway
             <div>
-                All 7
-                Hol 2 11
-                Hol 1 13
+                <button v-on:click="selected(7,'groups')">All Hol </button>
+                <button v-on:click="selected(13,'lights')">Hol 1</button>
+                <button v-on:click="selected(11,'lights')">Hol 2</button>
             </div>
         </div>
         <div>
             Control
             <div>
-                On
-                Off
-                Bri
-                Sat
-                K-Temp
-                Hue
+                <button id=on type="button" class="btn btn-default" v-on:click="buttonOn()">{{bOn}}</button>
+                <button id=off type="button" class="btn btn-default" v-on:click="buttonOff()">{{bOff}}</button>
+                <button id=sat type="button" class="btn btn-default" v-on:click="buttonSat()">{{bSat}}</button>
+                <button id=bri type="button" class="btn btn-default" v-on:click="buttonBri()">{{bBri}}</button>
+                <button id=hue type="button" class="btn btn-default" v-on:click="buttonHue()">{{bHue}}</button>
+                <button id=ct type="button" class="btn btn-default" v-on:click="buttonCt()">{{bCt}}</button>
+            </div>
+            Status
+            <div>
+                <div v-if="health==0">OK</div>
+                <div v-if="health==1">ERR</div>
+                <div v-if="health==2">Wait</div>
             </div>
         </div>
 
-
-
-
-
-        <input v-model="value" placeholder="Insert value"></input>
-        <button type="button" class="btn btn-default" v-on:click="buttonPressed()">{{myVar}}</button>
         <div v-if="health==0">OK</div>
         <div v-if="health==1">ERR</div>
         <div v-if="health==2">Wait</div>
         
-        <button id=on type="button" class="btn btn-default" v-on:click="buttonOn()">{{bOn}}</button>
-        <button id=off type="button" class="btn btn-default" v-on:click="buttonOff()">{{bOff}}</button>
-        <button id=sat type="button" class="btn btn-default" v-on:click="buttonSat()">{{bSat}}</button>
-        <button id=bri type="button" class="btn btn-default" v-on:click="buttonBri()">{{bBri}}</button>
-        <button id=hue type="button" class="btn btn-default" v-on:click="buttonHue()">{{bHue}}</button>
-        <button id=ct type="button" class="btn btn-default" v-on:click="buttonCt()">{{bCt}}</button>
-lalala
+
         
 
-        <b-form-slider id=bri v-model="basicValue" min="0" :max="100" trigger-change-event></b-form-slider>
-        <b-form-slider id=sat v-model="basicValue" min="0" :max="100" trigger-change-event></b-form-slider>
-lala
-
-
+        <b-form-slider id=bri v-model="briValue" min="0" :max="100" trigger-change-event></b-form-slider>
+        <b-form-slider id=sat v-model="satValue" min="0" :max="100" trigger-change-event></b-form-slider>
+        <b-form-slider id=ct v-model="ctValue" min="0" :max="100" trigger-change-event></b-form-slider>
+    <h2>Color picked: <span :style="{'color': color}">{{color}}</span></h2>
+    <choice-color :colors='colors' radius='10em' @updateColor='updateColor'>
+    </choice-color>
 
     </div>
 </template>
@@ -90,14 +77,20 @@ lala
 const Vue = require ('vue');
 const $ = require ('jquery');
 const bFormSlider = require("vue-bootstrap-slider").bFormSlider;
+const colorWheel = require ('vue-circle-choice').choiceColor;
 
 Vue.use(bFormSlider);
+Vue.use(colorWheel);
 Vue.component('b-form-slider', bFormSlider);
+Vue.component('choice-color', colorWheel);
 
 module.exports = {
     name: 'index',
     data (){
         return {
+            selectedRoom: 'None',
+            selectedId: 0,
+            selectedType: 0,
             myVar: 'Hello',
             value: 4,
             type: 'lights',
@@ -109,7 +102,19 @@ module.exports = {
             bBri:'Do BRI',
             bHue:'Do HUE',
             bCt: 'Do CT',
-            sliderVal: 5
+            sliderVal: 5,
+            colors: [
+        '#1ba6cc',
+        '#189ba7',
+        '#98c6ae',
+        '#45a270',
+        '#7cb325',
+        '#eb9826',
+        '#7B1FA2',
+        '#FF5252'
+      ],
+      index: 0,
+      color: null
         };
     },
     methods: {
@@ -117,7 +122,7 @@ module.exports = {
             this.myVar = 'Salut';
             let that = this;
             wait(500);
-            $.get( "/lights/state/"+this.value, function( data ) {
+            $.get( "/lights/state/"+this.selectedId, function( data ) {
                 console.log (data);
                 if (data.status === 'ok'){
                     that.show = true;
@@ -125,12 +130,23 @@ module.exports = {
                 
             });            
         },
+        
+        updateColor ({ index, color }) {
+      this.index = index
+      this.color = color
+    },
+        selected (selectedId, selectedType){
+            this.selectedId = selectedId;
+            this.selectedType = selectedType;
+            console.log(selectedId);
+            console.log(selectedType);
+        },
 
         buttonOn (){
             this.bOn = 'Sent!';
             let that = this;
             this.health = 2;
-            $.get( "/"+this.type+"/on/"+this.value, function( data ) {
+            $.get( "/"+this.selectedType+"/on/"+this.selectedId, function( data ) {
                 console.log (data);
                 if (data.status === 'ok'){
                     that.health = 0;
@@ -143,7 +159,7 @@ module.exports = {
         buttonOff (){
             this.bOff = 'Sent!';
             let that = this;
-            $.get( "/"+this.type+"/off/"+this.value, function( data ) {
+            $.get( "/"+this.selectedType+"/off/"+this.selectedId, function( data ) {
                 console.log (data);
                 if (data.status === 'ok'){
                     that.show = true;
@@ -155,7 +171,7 @@ module.exports = {
         buttonSat (){
             this.bSat = 'Sent!';
             let that = this;
-            $.get( "/"+this.type+"/sat/"+this.value+"/"+this.parameter, function( data ) {
+            $.get( "/"+this.selectedType+"/sat/"+this.selectedId+"/"+this.parameter, function( data ) {
                 console.log (data);
                 if (data.status === 'ok'){
                     that.show = true;
@@ -167,7 +183,7 @@ module.exports = {
         buttonBri (){
             this.bBri = 'Sent!';
             let that = this;
-            $.get( "/"+this.type+"/bri/"+this.value+"/"+this.parameter, function( data ) {
+            $.get( "/"+this.selectedType+"/bri/"+this.selectedId+"/"+this.parameter, function( data ) {
                 console.log (data);
                 if (data.status === 'ok'){
                     that.show = true;
@@ -179,7 +195,7 @@ module.exports = {
         buttonHue (){
             this.bHue = 'Sent!';
             let that = this;
-            $.get( "/"+this.type+"/hue/"+this.value+"/"+this.parameter, function( data ) {
+            $.get( "/"+this.selectedType+"/hue/"+this.selectedId+"/"+this.parameter, function( data ) {
                 console.log (data);
                 if (data.status === 'ok'){
                     that.show = true;
@@ -191,7 +207,7 @@ module.exports = {
         buttonCt (){
             this.bCt = 'Sent!';
             let that = this;
-            $.get( "/"+this.type+"/ct/"+this.value+"/"+this.parameter, function( data ) {
+            $.get( "/"+this.selectedType+"/ct/"+this.selectedId+"/"+this.ctValue, function( data ) {
                 console.log (data);
                 if (data.status === 'ok'){
                     that.show = true;
