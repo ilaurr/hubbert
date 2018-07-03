@@ -1,6 +1,5 @@
 <template>
     <div>
-        Hello!!!!
         <button v-on:click="selectedRoom='Living'">Living</button>
         <button v-on:click="selectedRoom='Bedroom'">Bedroom</button>
         <button v-on:click="selectedRoom='Bathroom'">Bathroom</button>
@@ -48,6 +47,10 @@
                 <button id=bri type="button" class="btn btn-default" v-on:click="buttonBri()">{{bBri}}</button>
                 <button id=hue type="button" class="btn btn-default" v-on:click="buttonHue()">{{bHue}}</button>
                 <button id=ct type="button" class="btn btn-default" v-on:click="buttonCt()">{{bCt}}</button>
+                <b-form-slider id=bri v-model="briValue" :min="0" :max="100" trigger-change-event></b-form-slider>
+                <b-form-slider id=sat v-model="satValue" :min="0" :max="100" trigger-change-event></b-form-slider>
+                <b-form-slider id=ct v-model="ctValue" :min="0" :max="100" trigger-change-event></b-form-slider>
+                <choice-color :colors='colors' radius='10em' @updateColor='updateColor'></choice-color>
             </div>
             Status
             <div>
@@ -56,20 +59,14 @@
                 <div v-if="health==2">Wait</div>
             </div>
         </div>
-
-        <div v-if="health==0">OK</div>
-        <div v-if="health==1">ERR</div>
-        <div v-if="health==2">Wait</div>
-        
+      
 
         
 
-        <b-form-slider id=bri v-model="briValue" min="0" :max="100" trigger-change-event></b-form-slider>
-        <b-form-slider id=sat v-model="satValue" min="0" :max="100" trigger-change-event></b-form-slider>
-        <b-form-slider id=ct v-model="ctValue" min="0" :max="100" trigger-change-event></b-form-slider>
-    <h2>Color picked: <span :style="{'color': color}">{{color}}</span></h2>
-    <choice-color :colors='colors' radius='10em' @updateColor='updateColor'>
-    </choice-color>
+        <b-form-slider id=bri v-model="briValue" :min="0" :max="100" trigger-change-event></b-form-slider>
+        <b-form-slider id=sat v-model="satValue" :min="0" :max="100" trigger-change-event></b-form-slider>
+        <b-form-slider id=ct v-model="ctValue" :min="0" :max="100" trigger-change-event></b-form-slider>
+        <choice-color :colors='colors' radius='10em' @updateColor='updateColor'></choice-color>
 
     </div>
 </template>
@@ -83,7 +80,19 @@ Vue.use(bFormSlider);
 Vue.use(colorWheel);
 Vue.component('b-form-slider', bFormSlider);
 Vue.component('choice-color', colorWheel);
+ var colorkey=
+            {
+                "#FF0000": 0,
+                "#FF6A06": 4300,
+                "#FFFF00": 10000,
+                "#00FF00": 24000,
+                "#80FF00": 20000,
+                "#00FFFF": 39000,
+                "#0000FF": 42000,
+                "#FF00FF": 50000,
+                "#FF0080": 58000,
 
+            };
 module.exports = {
     name: 'index',
     data (){
@@ -96,6 +105,10 @@ module.exports = {
             type: 'lights',
             parameter: 201,
             health: 0,
+            satValue:50,
+            briValue:50,
+            ctValue:200,
+            huevalue:0,
             bOn:'Do ON',
             bOff:'Do OFF',
             bSat:'Do SAT',
@@ -104,14 +117,15 @@ module.exports = {
             bCt: 'Do CT',
             sliderVal: 5,
             colors: [
-        '#1ba6cc',
-        '#189ba7',
-        '#98c6ae',
-        '#45a270',
-        '#7cb325',
-        '#eb9826',
-        '#7B1FA2',
-        '#FF5252'
+                "#FF0000",
+                "#FF6A06",
+                "#FFFF00",
+                "#00FF00",
+                "#80FF00",
+                "#00FFFF",
+                "#0000FF",
+                "#FF00FF",
+                "#FF0080"
       ],
       index: 0,
       color: null
@@ -134,6 +148,8 @@ module.exports = {
         updateColor ({ index, color }) {
       this.index = index
       this.color = color
+      this.hueValue = colorkey[this.color]
+
     },
         selected (selectedId, selectedType){
             this.selectedId = selectedId;
@@ -143,7 +159,7 @@ module.exports = {
         },
 
         buttonOn (){
-            this.bOn = 'Sent!';
+            // this.bOn = 'Sent!';
             let that = this;
             this.health = 2;
             $.get( "/"+this.selectedType+"/on/"+this.selectedId, function( data ) {
@@ -157,7 +173,7 @@ module.exports = {
         },
 
         buttonOff (){
-            this.bOff = 'Sent!';
+            // this.bOff = 'Sent!';
             let that = this;
             $.get( "/"+this.selectedType+"/off/"+this.selectedId, function( data ) {
                 console.log (data);
@@ -169,9 +185,9 @@ module.exports = {
         },
 
         buttonSat (){
-            this.bSat = 'Sent!';
+            // this.bSat = 'Sent!';
             let that = this;
-            $.get( "/"+this.selectedType+"/sat/"+this.selectedId+"/"+this.parameter, function( data ) {
+            $.get( "/"+this.selectedType+"/sat/"+this.selectedId+"/"+this.satValue, function( data ) {
                 console.log (data);
                 if (data.status === 'ok'){
                     that.show = true;
@@ -181,7 +197,7 @@ module.exports = {
         },
 
         buttonBri (){
-            this.bBri = 'Sent!';
+            // this.bBri = 'Sent!';
             let that = this;
             $.get( "/"+this.selectedType+"/bri/"+this.selectedId+"/"+this.parameter, function( data ) {
                 console.log (data);
@@ -193,10 +209,11 @@ module.exports = {
         },
 
         buttonHue (){
-            this.bHue = 'Sent!';
+            // this.bHue = 'Sent!';
             let that = this;
-            $.get( "/"+this.selectedType+"/hue/"+this.selectedId+"/"+this.parameter, function( data ) {
+            $.get( "/"+this.selectedType+"/hue/"+this.selectedId+"/"+this.hueValue, function( data ) {
                 console.log (data);
+                console.log(hueValue);
                 if (data.status === 'ok'){
                     that.show = true;
                 }
@@ -205,10 +222,11 @@ module.exports = {
         },
 
         buttonCt (){
-            this.bCt = 'Sent!';
+            // this.bCt = 'Sent!';
             let that = this;
-            $.get( "/"+this.selectedType+"/ct/"+this.selectedId+"/"+this.ctValue, function( data ) {
+            $.get( "/"+this.selectedType+"/ct/"+this.selectedId+"/"+(150+3.5*this.ctValue), function( data ) {
                 console.log (data);
+                conosle.log (100+3.5*this.ctValue);
                 if (data.status === 'ok'){
                     that.show = true;
                 }

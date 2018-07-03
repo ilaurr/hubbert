@@ -27374,14 +27374,6 @@ new Vue ({
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 const Vue = require ('vue');
 const $ = require ('jquery');
@@ -27392,7 +27384,19 @@ Vue.use(bFormSlider);
 Vue.use(colorWheel);
 Vue.component('b-form-slider', bFormSlider);
 Vue.component('choice-color', colorWheel);
+ var colorkey=
+            {
+                "#FF0000": 0,
+                "#FF6A06": 4300,
+                "#FFFF00": 10000,
+                "#00FF00": 24000,
+                "#80FF00": 20000,
+                "#00FFFF": 39000,
+                "#0000FF": 42000,
+                "#FF00FF": 50000,
+                "#FF0080": 58000,
 
+            };
 module.exports = {
     name: 'index',
     data (){
@@ -27405,6 +27409,10 @@ module.exports = {
             type: 'lights',
             parameter: 201,
             health: 0,
+            satValue:50,
+            briValue:50,
+            ctValue:200,
+            huevalue:0,
             bOn:'Do ON',
             bOff:'Do OFF',
             bSat:'Do SAT',
@@ -27413,14 +27421,15 @@ module.exports = {
             bCt: 'Do CT',
             sliderVal: 5,
             colors: [
-        '#1ba6cc',
-        '#189ba7',
-        '#98c6ae',
-        '#45a270',
-        '#7cb325',
-        '#eb9826',
-        '#7B1FA2',
-        '#FF5252'
+                "#FF0000",
+                "#FF6A06",
+                "#FFFF00",
+                "#00FF00",
+                "#80FF00",
+                "#00FFFF",
+                "#0000FF",
+                "#FF00FF",
+                "#FF0080"
       ],
       index: 0,
       color: null
@@ -27443,6 +27452,8 @@ module.exports = {
         updateColor ({ index, color }) {
       this.index = index
       this.color = color
+      this.hueValue = colorkey[this.color]
+
     },
         selected (selectedId, selectedType){
             this.selectedId = selectedId;
@@ -27452,7 +27463,7 @@ module.exports = {
         },
 
         buttonOn (){
-            this.bOn = 'Sent!';
+            // this.bOn = 'Sent!';
             let that = this;
             this.health = 2;
             $.get( "/"+this.selectedType+"/on/"+this.selectedId, function( data ) {
@@ -27466,7 +27477,7 @@ module.exports = {
         },
 
         buttonOff (){
-            this.bOff = 'Sent!';
+            // this.bOff = 'Sent!';
             let that = this;
             $.get( "/"+this.selectedType+"/off/"+this.selectedId, function( data ) {
                 console.log (data);
@@ -27478,9 +27489,9 @@ module.exports = {
         },
 
         buttonSat (){
-            this.bSat = 'Sent!';
+            // this.bSat = 'Sent!';
             let that = this;
-            $.get( "/"+this.selectedType+"/sat/"+this.selectedId+"/"+this.parameter, function( data ) {
+            $.get( "/"+this.selectedType+"/sat/"+this.selectedId+"/"+this.satValue, function( data ) {
                 console.log (data);
                 if (data.status === 'ok'){
                     that.show = true;
@@ -27490,7 +27501,7 @@ module.exports = {
         },
 
         buttonBri (){
-            this.bBri = 'Sent!';
+            // this.bBri = 'Sent!';
             let that = this;
             $.get( "/"+this.selectedType+"/bri/"+this.selectedId+"/"+this.parameter, function( data ) {
                 console.log (data);
@@ -27502,10 +27513,11 @@ module.exports = {
         },
 
         buttonHue (){
-            this.bHue = 'Sent!';
+            // this.bHue = 'Sent!';
             let that = this;
-            $.get( "/"+this.selectedType+"/hue/"+this.selectedId+"/"+this.parameter, function( data ) {
+            $.get( "/"+this.selectedType+"/hue/"+this.selectedId+"/"+this.hueValue, function( data ) {
                 console.log (data);
+                console.log(hueValue);
                 if (data.status === 'ok'){
                     that.show = true;
                 }
@@ -27514,10 +27526,11 @@ module.exports = {
         },
 
         buttonCt (){
-            this.bCt = 'Sent!';
+            // this.bCt = 'Sent!';
             let that = this;
-            $.get( "/"+this.selectedType+"/ct/"+this.selectedId+"/"+this.parameter, function( data ) {
+            $.get( "/"+this.selectedType+"/ct/"+this.selectedId+"/"+(150+3.5*this.ctValue), function( data ) {
                 console.log (data);
+                conosle.log (100+3.5*this.ctValue);
                 if (data.status === 'ok'){
                     that.show = true;
                 }
@@ -27532,7 +27545,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n        Hello!!!!\n        "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Living'}}},[_vm._v("Living")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Bedroom'}}},[_vm._v("Bedroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Bathroom'}}},[_vm._v("Bathroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Kitchen'}}},[_vm._v("Kitchen")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Hallway'}}},[_vm._v("Hallway")]),_vm._v(" "),_c('div',[_c('div',[_vm._v("\n                Living\n                "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(1,'groups')}}},[_vm._v("All Living")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(7,'lights')}}},[_vm._v("Living Couch Strip")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(8,'lights')}}},[_vm._v("Living TV Strip")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(10,'lights')}}},[_vm._v("Living 1")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(12,'lights')}}},[_vm._v("Living 2")])])]),_vm._v("\n            Bedroom\n            "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(2,'groups')}}},[_vm._v("All Bedroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(4,'lights')}}},[_vm._v("Bed 1")])]),_vm._v("\n            Bathroom\n            "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(3,'groups')}}},[_vm._v("All Bathroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(5,'lights')}}},[_vm._v("Bath 1")])]),_vm._v("\n            Kitchen\n            "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(4,'groups')}}},[_vm._v("All Kitchen")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(9,'lights')}}},[_vm._v("Kitchen 1")])]),_vm._v("\n            Hallway\n            "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(7,'groups')}}},[_vm._v("All Hol ")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(13,'lights')}}},[_vm._v("Hol 1")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(11,'lights')}}},[_vm._v("Hol 2")])])]),_vm._v(" "),_c('div',[_vm._v("\n            Control\n            "),_c('div',[_c('button',{staticClass:"btn btn-default",attrs:{"id":"on","type":"button"},on:{"click":function($event){_vm.buttonOn()}}},[_vm._v(_vm._s(_vm.bOn))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"off","type":"button"},on:{"click":function($event){_vm.buttonOff()}}},[_vm._v(_vm._s(_vm.bOff))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"sat","type":"button"},on:{"click":function($event){_vm.buttonSat()}}},[_vm._v(_vm._s(_vm.bSat))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"bri","type":"button"},on:{"click":function($event){_vm.buttonBri()}}},[_vm._v(_vm._s(_vm.bBri))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"hue","type":"button"},on:{"click":function($event){_vm.buttonHue()}}},[_vm._v(_vm._s(_vm.bHue))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"ct","type":"button"},on:{"click":function($event){_vm.buttonCt()}}},[_vm._v(_vm._s(_vm.bCt))])]),_vm._v("\n            Status\n            "),_c('div',[(_vm.health==0)?_c('div',[_vm._v("OK")]):_vm._e(),_vm._v(" "),(_vm.health==1)?_c('div',[_vm._v("ERR")]):_vm._e(),_vm._v(" "),(_vm.health==2)?_c('div',[_vm._v("Wait")]):_vm._e()])]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.value),expression:"value"}],attrs:{"placeholder":"Insert value"},domProps:{"value":(_vm.value)},on:{"input":function($event){if($event.target.composing){ return; }_vm.value=$event.target.value}}}),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"type":"button"},on:{"click":function($event){_vm.buttonPressed()}}},[_vm._v(_vm._s(_vm.myVar))]),_vm._v(" "),(_vm.health==0)?_c('div',[_vm._v("OK")]):_vm._e(),_vm._v(" "),(_vm.health==1)?_c('div',[_vm._v("ERR")]):_vm._e(),_vm._v(" "),(_vm.health==2)?_c('div',[_vm._v("Wait")]):_vm._e(),_vm._v("\n        \n\nlalala\n        \n\n        "),_c('b-form-slider',{attrs:{"id":"bri","min":"0","max":100,"trigger-change-event":""},model:{value:(_vm.basicValue),callback:function ($$v) {_vm.basicValue=$$v},expression:"basicValue"}}),_vm._v(" "),_c('b-form-slider',{attrs:{"id":"sat","min":"0","max":100,"trigger-change-event":""},model:{value:(_vm.basicValue),callback:function ($$v) {_vm.basicValue=$$v},expression:"basicValue"}}),_vm._v(" "),_c('b-form-slider',{attrs:{"id":"sat","min":"0","max":500,"trigger-change-event":""},model:{value:(_vm.basicValue),callback:function ($$v) {_vm.basicValue=$$v},expression:"basicValue"}}),_vm._v("\nlala\n    "),_c('h2',[_vm._v("Color picked: "),_c('span',{style:({'color': _vm.color})},[_vm._v(_vm._s(_vm.color))])]),_vm._v(" "),_c('choice-color',{attrs:{"colors":_vm.colors,"radius":"10em"},on:{"updateColor":_vm.updateColor}})],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n    Hello!!!!\n    "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Living'}}},[_vm._v("Living")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Bedroom'}}},[_vm._v("Bedroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Bathroom'}}},[_vm._v("Bathroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Kitchen'}}},[_vm._v("Kitchen")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Hallway'}}},[_vm._v("Hallway")]),_vm._v(" "),_c('div',[_c('div',[_vm._v("\n            Living\n            "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(1,'groups')}}},[_vm._v("All Living")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(7,'lights')}}},[_vm._v("Living Couch Strip")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(8,'lights')}}},[_vm._v("Living TV Strip")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(10,'lights')}}},[_vm._v("Living 1")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(12,'lights')}}},[_vm._v("Living 2")])])]),_vm._v("\n        Bedroom\n        "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(2,'groups')}}},[_vm._v("All Bedroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(4,'lights')}}},[_vm._v("Bed 1")])]),_vm._v("\n        Bathroom\n        "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(3,'groups')}}},[_vm._v("All Bathroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(5,'lights')}}},[_vm._v("Bath 1")])]),_vm._v("\n        Kitchen\n        "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(4,'groups')}}},[_vm._v("All Kitchen")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(9,'lights')}}},[_vm._v("Kitchen 1")])]),_vm._v("\n        Hallway\n        "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(7,'groups')}}},[_vm._v("All Hol ")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(13,'lights')}}},[_vm._v("Hol 1")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(11,'lights')}}},[_vm._v("Hol 2")])])]),_vm._v(" "),_c('div',[_vm._v("\n        Control\n        "),_c('div',[_c('button',{staticClass:"btn btn-default",attrs:{"id":"on","type":"button"},on:{"click":function($event){_vm.buttonOn()}}},[_vm._v(_vm._s(_vm.bOn))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"off","type":"button"},on:{"click":function($event){_vm.buttonOff()}}},[_vm._v(_vm._s(_vm.bOff))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"sat","type":"button"},on:{"click":function($event){_vm.buttonSat()}}},[_vm._v(_vm._s(_vm.bSat))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"bri","type":"button"},on:{"click":function($event){_vm.buttonBri()}}},[_vm._v(_vm._s(_vm.bBri))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"hue","type":"button"},on:{"click":function($event){_vm.buttonHue()}}},[_vm._v(_vm._s(_vm.bHue))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"ct","type":"button"},on:{"click":function($event){_vm.buttonCt()}}},[_vm._v(_vm._s(_vm.bCt))])]),_vm._v("\n        Status\n        "),_c('div',[(_vm.health==0)?_c('div',[_vm._v("OK")]):_vm._e(),_vm._v(" "),(_vm.health==1)?_c('div',[_vm._v("ERR")]):_vm._e(),_vm._v(" "),(_vm.health==2)?_c('div',[_vm._v("Wait")]):_vm._e()])]),_vm._v(" "),(_vm.health==0)?_c('div',[_vm._v("OK")]):_vm._e(),_vm._v(" "),(_vm.health==1)?_c('div',[_vm._v("ERR")]):_vm._e(),_vm._v(" "),(_vm.health==2)?_c('div',[_vm._v("Wait")]):_vm._e(),_vm._v(" "),_c('b-form-slider',{attrs:{"id":"bri","min":0,"max":100,"trigger-change-event":""},model:{value:(_vm.briValue),callback:function ($$v) {_vm.briValue=$$v},expression:"briValue"}}),_vm._v(" "),_c('b-form-slider',{attrs:{"id":"sat","min":0,"max":100,"trigger-change-event":""},model:{value:(_vm.satValue),callback:function ($$v) {_vm.satValue=$$v},expression:"satValue"}}),_vm._v(" "),_c('b-form-slider',{attrs:{"id":"ct","min":0,"max":100,"trigger-change-event":""},model:{value:(_vm.ctValue),callback:function ($$v) {_vm.ctValue=$$v},expression:"ctValue"}}),_vm._v(" "),_c('choice-color',{attrs:{"colors":_vm.colors,"radius":"10em"},on:{"updateColor":_vm.updateColor}})],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
