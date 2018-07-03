@@ -59,15 +59,6 @@
                 <div v-if="health==2">Wait</div>
             </div>
         </div>
-      
-
-        
-
-        <b-form-slider id=bri v-model="briValue" :min="0" :max="100" trigger-change-event></b-form-slider>
-        <b-form-slider id=sat v-model="satValue" :min="0" :max="100" trigger-change-event></b-form-slider>
-        <b-form-slider id=ct v-model="ctValue" :min="0" :max="100" trigger-change-event></b-form-slider>
-        <choice-color :colors='colors' radius='10em' @updateColor='updateColor'></choice-color>
-
     </div>
 </template>
 <script>
