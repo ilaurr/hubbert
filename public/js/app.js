@@ -27323,6 +27323,68 @@ new Vue ({
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 const Vue = require ('vue');
 const $ = require ('jquery');
@@ -27444,16 +27506,16 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n        Hello!!!!\n        "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.value),expression:"value"}],attrs:{"placeholder":"Insert value"},domProps:{"value":(_vm.value)},on:{"input":function($event){if($event.target.composing){ return; }_vm.value=$event.target.value}}}),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"type":"button"},on:{"click":function($event){_vm.buttonPressed()}}},[_vm._v(_vm._s(_vm.myVar))]),_vm._v(" "),(_vm.health==0)?_c('div',[_vm._v("OK")]):_vm._e(),_vm._v(" "),(_vm.health==1)?_c('div',[_vm._v("ERR")]):_vm._e(),_vm._v(" "),(_vm.health==2)?_c('div',[_vm._v("Wait")]):_vm._e(),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"on","type":"button"},on:{"click":function($event){_vm.buttonOn()}}},[_vm._v(_vm._s(_vm.bOn))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"off","type":"button"},on:{"click":function($event){_vm.buttonOff()}}},[_vm._v(_vm._s(_vm.bOff))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"sat","type":"button"},on:{"click":function($event){_vm.buttonSat()}}},[_vm._v(_vm._s(_vm.bSat))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"bri","type":"button"},on:{"click":function($event){_vm.buttonBri()}}},[_vm._v(_vm._s(_vm.bBri))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"hue","type":"button"},on:{"click":function($event){_vm.buttonHue()}}},[_vm._v(_vm._s(_vm.bHue))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"ct","type":"button"},on:{"click":function($event){_vm.buttonCt()}}},[_vm._v(_vm._s(_vm.bCt))]),_vm._v("\nlalala\n        "),_vm._v(" "),_c('b-form-slider',{attrs:{"min":"0","max":100,"trigger-change-event":""},model:{value:(_vm.basicValue),callback:function ($$v) {_vm.basicValue=$$v},expression:"basicValue"}}),_vm._v("\n\nlala\n\n\n\n    ")],1)}
-__vue__options__.staticRenderFns = []
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n        Hello!!!!\n        "),_c('div',[_vm._v("\n            Room: Living 1\n        ")]),_vm._v(" "),_c('div',[_vm._v("\n            Room: Bedroom 2\n        ")]),_vm._v(" "),_c('div',[_vm._v("\n            Room: Bathroom 3\n        ")]),_vm._v(" "),_c('div',[_vm._v("\n            Room: Kitchen 4\n        ")]),_vm._v(" "),_c('div',[_vm._v("\n            Room: Hallway 7\n        ")]),_vm._v(" "),_vm._m(0),_vm._v(" "),_vm._m(1),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.value),expression:"value"}],attrs:{"placeholder":"Insert value"},domProps:{"value":(_vm.value)},on:{"input":function($event){if($event.target.composing){ return; }_vm.value=$event.target.value}}}),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"type":"button"},on:{"click":function($event){_vm.buttonPressed()}}},[_vm._v(_vm._s(_vm.myVar))]),_vm._v(" "),(_vm.health==0)?_c('div',[_vm._v("OK")]):_vm._e(),_vm._v(" "),(_vm.health==1)?_c('div',[_vm._v("ERR")]):_vm._e(),_vm._v(" "),(_vm.health==2)?_c('div',[_vm._v("Wait")]):_vm._e(),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"on","type":"button"},on:{"click":function($event){_vm.buttonOn()}}},[_vm._v(_vm._s(_vm.bOn))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"off","type":"button"},on:{"click":function($event){_vm.buttonOff()}}},[_vm._v(_vm._s(_vm.bOff))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"sat","type":"button"},on:{"click":function($event){_vm.buttonSat()}}},[_vm._v(_vm._s(_vm.bSat))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"bri","type":"button"},on:{"click":function($event){_vm.buttonBri()}}},[_vm._v(_vm._s(_vm.bBri))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"hue","type":"button"},on:{"click":function($event){_vm.buttonHue()}}},[_vm._v(_vm._s(_vm.bHue))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"ct","type":"button"},on:{"click":function($event){_vm.buttonCt()}}},[_vm._v(_vm._s(_vm.bCt))]),_vm._v("\nlalala\n        \n\n        "),_c('b-form-slider',{attrs:{"id":"bri","min":"0","max":100,"trigger-change-event":""},model:{value:(_vm.basicValue),callback:function ($$v) {_vm.basicValue=$$v},expression:"basicValue"}}),_vm._v(" "),_c('b-form-slider',{attrs:{"id":"sat","min":"0","max":100,"trigger-change-event":""},model:{value:(_vm.basicValue),callback:function ($$v) {_vm.basicValue=$$v},expression:"basicValue"}}),_vm._v("\nlala\n\n\n\n    ")],1)}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n            Living\n            "),_c('div',[_vm._v("\n                All 1\n                Living Couch Strip 7\n                Living TV Strip 8\n                Living 1 10\n                Living 2 12\n            ")]),_vm._v("\n            Bedroom\n            "),_c('div',[_vm._v("\n                All 2\n                Bed 1 4\n            ")]),_vm._v("\n            Bathroom\n            "),_c('div',[_vm._v("\n                All 3\n                Bath 1 5\n            ")]),_vm._v("\n            Kitchen\n            "),_c('div',[_vm._v("\n                All 4\n                Kitchen 1 9\n            ")]),_vm._v("\n            Hallway\n            "),_c('div',[_vm._v("\n                All 7\n                Hol 2 11\n                Hol 1 13\n            ")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n            Control\n            "),_c('div',[_vm._v("\n                On\n                Off\n                Bri\n                Sat\n                K-Temp\n                Hue\n            ")])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2f7e6c08", __vue__options__)
+    hotAPI.createRecord("data-v-519408fe", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2f7e6c08", __vue__options__)
+    hotAPI.reload("data-v-519408fe", __vue__options__)
   }
 })()}
 },{"jquery":3,"vue":9,"vue-bootstrap-slider":7,"vue-hot-reload-api":8}]},{},[10]);

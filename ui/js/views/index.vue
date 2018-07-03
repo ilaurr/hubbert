@@ -1,6 +1,68 @@
 <template>
     <div>
         Hello!!!!
+        <div>
+            Room: Living 1
+        </div>
+        <div>
+            Room: Bedroom 2
+        </div>
+        <div>
+            Room: Bathroom 3
+        </div>
+        <div>
+            Room: Kitchen 4
+        </div>
+        <div>
+            Room: Hallway 7
+        </div>
+        <div>
+            Living
+            <div>
+                All 1
+                Living Couch Strip 7
+                Living TV Strip 8
+                Living 1 10
+                Living 2 12
+            </div>
+            Bedroom
+            <div>
+                All 2
+                Bed 1 4
+            </div>
+            Bathroom
+            <div>
+                All 3
+                Bath 1 5
+            </div>
+            Kitchen
+            <div>
+                All 4
+                Kitchen 1 9
+            </div>
+            Hallway
+            <div>
+                All 7
+                Hol 2 11
+                Hol 1 13
+            </div>
+        </div>
+        <div>
+            Control
+            <div>
+                On
+                Off
+                Bri
+                Sat
+                K-Temp
+                Hue
+            </div>
+        </div>
+
+
+
+
+
         <input v-model="value" placeholder="Insert value"></input>
         <button type="button" class="btn btn-default" v-on:click="buttonPressed()">{{myVar}}</button>
         <div v-if="health==0">OK</div>
