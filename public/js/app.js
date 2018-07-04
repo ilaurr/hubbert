@@ -27362,6 +27362,46 @@ new Vue ({
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 const Vue = require ('vue');
 const $ = require ('jquery');
@@ -27401,12 +27441,12 @@ module.exports = {
             briValue:50,
             ctValue:200,
             huevalue:0,
-            bOn:'Do ON',
-            bOff:'Do OFF',
-            bSat:'Do SAT',
-            bBri:'Do BRI',
-            bHue:'Do HUE',
-            bCt: 'Do CT',
+            bOn:'Set ON',
+            bOff:'Set OFF',
+            bSat:'Set SAT',
+            bBri:'Set BRI',
+            bHue:'Set HUE',
+            bCt: 'Set CT',
             sliderVal: 5,
             colors: [
                 "#FF0000",
@@ -27533,16 +27573,16 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('button',{on:{"click":function($event){_vm.selectedRoom='Living'}}},[_vm._v("Living")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Bedroom'}}},[_vm._v("Bedroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Bathroom'}}},[_vm._v("Bathroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Kitchen'}}},[_vm._v("Kitchen")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selectedRoom='Hallway'}}},[_vm._v("Hallway")]),_vm._v(" "),_c('div',[_c('div',[_vm._v("\n            Living\n            "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(1,'groups')}}},[_vm._v("All Living")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(7,'lights')}}},[_vm._v("Living Couch Strip")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(8,'lights')}}},[_vm._v("Living TV Strip")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(10,'lights')}}},[_vm._v("Living 1")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(12,'lights')}}},[_vm._v("Living 2")])])]),_vm._v("\n        Bedroom\n        "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(2,'groups')}}},[_vm._v("All Bedroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(4,'lights')}}},[_vm._v("Bed 1")])]),_vm._v("\n        Bathroom\n        "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(3,'groups')}}},[_vm._v("All Bathroom")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(5,'lights')}}},[_vm._v("Bath 1")])]),_vm._v("\n        Kitchen\n        "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(4,'groups')}}},[_vm._v("All Kitchen")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(9,'lights')}}},[_vm._v("Kitchen 1")])]),_vm._v("\n        Hallway\n        "),_c('div',[_c('button',{on:{"click":function($event){_vm.selected(7,'groups')}}},[_vm._v("All Hol ")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(13,'lights')}}},[_vm._v("Hol 1")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(11,'lights')}}},[_vm._v("Hol 2")])])]),_vm._v(" "),_c('div',[_vm._v("\n        Control\n        "),_c('div',[_c('button',{staticClass:"btn btn-default",attrs:{"id":"on","type":"button"},on:{"click":function($event){_vm.buttonOn()}}},[_vm._v(_vm._s(_vm.bOn))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"off","type":"button"},on:{"click":function($event){_vm.buttonOff()}}},[_vm._v(_vm._s(_vm.bOff))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"sat","type":"button"},on:{"click":function($event){_vm.buttonSat()}}},[_vm._v(_vm._s(_vm.bSat))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"bri","type":"button"},on:{"click":function($event){_vm.buttonBri()}}},[_vm._v(_vm._s(_vm.bBri))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"hue","type":"button"},on:{"click":function($event){_vm.buttonHue()}}},[_vm._v(_vm._s(_vm.bHue))]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",attrs:{"id":"ct","type":"button"},on:{"click":function($event){_vm.buttonCt()}}},[_vm._v(_vm._s(_vm.bCt))]),_vm._v(" "),_c('b-form-slider',{attrs:{"id":"bri","min":0,"max":100,"trigger-change-event":""},model:{value:(_vm.briValue),callback:function ($$v) {_vm.briValue=$$v},expression:"briValue"}}),_vm._v(" "),_c('b-form-slider',{attrs:{"id":"sat","min":0,"max":100,"trigger-change-event":""},model:{value:(_vm.satValue),callback:function ($$v) {_vm.satValue=$$v},expression:"satValue"}}),_vm._v(" "),_c('b-form-slider',{attrs:{"id":"ct","min":0,"max":100,"trigger-change-event":""},model:{value:(_vm.ctValue),callback:function ($$v) {_vm.ctValue=$$v},expression:"ctValue"}}),_vm._v(" "),_c('choice-color',{attrs:{"colors":_vm.colors,"radius":"10em"},on:{"updateColor":_vm.updateColor}})],1),_vm._v("\n        Status\n        "),_c('div',[(_vm.health==0)?_c('div',[_vm._v("OK")]):_vm._e(),_vm._v(" "),(_vm.health==1)?_c('div',[_vm._v("ERR")]):_vm._e(),_vm._v(" "),(_vm.health==2)?_c('div',[_vm._v("Wait")]):_vm._e()])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container-fluid p-0 m-0"},[_c('div',{staticClass:"d-flex h-100"},[_c('div',{staticClass:"w-80 left-side"},[_c('ul',{staticClass:"nav nav-tabs",attrs:{"id":"myTab","role":"tablist"}},[_c('li',{staticClass:"nav-item"},[_c('a',{staticClass:"nav-link active",attrs:{"id":"living-tab","data-toggle":"tab","href":"#living","role":"tab","aria-controls":"living","aria-selected":"true"},on:{"click":function($event){_vm.selectedRoom='Living'}}},[_vm._v("Living")])]),_vm._v(" "),_c('li',{staticClass:"nav-item"},[_c('a',{staticClass:"nav-link",attrs:{"id":"bedroom-tab","data-toggle":"tab","href":"#bedroom","role":"tab","aria-controls":"bedroom","aria-selected":"false"},on:{"click":function($event){_vm.selectedRoom='Bedroom'}}},[_vm._v("Bedroom")])]),_vm._v(" "),_c('li',{staticClass:"nav-item"},[_c('a',{staticClass:"nav-link",attrs:{"id":"bathroom-tab","data-toggle":"tab","href":"#bathroom","role":"tab","aria-controls":"bathroom","aria-selected":"false"},on:{"click":function($event){_vm.selectedRoom='Bathroom'}}},[_vm._v("Bathroom")])]),_vm._v(" "),_c('li',{staticClass:"nav-item"},[_c('a',{staticClass:"nav-link",attrs:{"id":"kitchen-tab","data-toggle":"tab","href":"#kitchen","role":"tab","aria-controls":"kitchen","aria-selected":"false"},on:{"click":function($event){_vm.selectedRoom='Kitchen'}}},[_vm._v("Kitchen")])]),_vm._v(" "),_c('li',{staticClass:"nav-item"},[_c('a',{staticClass:"nav-link",attrs:{"id":"hallway-tab","data-toggle":"tab","href":"#hallway","role":"tab","aria-controls":"hallway","aria-selected":"false"},on:{"click":function($event){_vm.selectedRoom='Hallway'}}},[_vm._v("Hallway")])])]),_vm._v(" "),_c('div',{staticClass:"tab-content p-3 m-3",attrs:{"id":"myTabContent"}},[_c('div',{staticClass:"tab-pane fade show active",attrs:{"id":"living","role":"tabpanel","aria-labelledby":"living-tab"}},[_c('h1',[_vm._v("Living")]),_vm._v(" "),_c('div',{staticClass:"btns"},[_c('button',{staticClass:"active",on:{"click":function($event){_vm.selected(1,'groups')}}},[_c('img',{attrs:{"src":"../img/lights.png"}}),_c('span',[_vm._v("All Lights")])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(7,'lights')}}},[_c('img',{attrs:{"src":"../img/ledstrip.png"}}),_c('span',[_vm._v("Couch Strip")])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(8,'lights')}}},[_c('img',{attrs:{"src":"../img/ledstrip.png"}}),_c('span',[_vm._v("TV Strip")])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(10,'lights')}}},[_c('img',{attrs:{"src":"../img/light.png"}}),_c('span',[_vm._v("Light 1")])]),_vm._v(" "),_c('button',{staticClass:"notactive",on:{"click":function($event){_vm.selected(12,'lights')}}},[_c('img',{attrs:{"src":"../img/light.png"}}),_c('span',[_vm._v("Light 2")])])])]),_vm._v(" "),_c('div',{staticClass:"tab-pane fade",attrs:{"id":"bedroom","role":"tabpanel","aria-labelledby":"bedroom-tab"}},[_c('h1',[_vm._v("Bedroom")]),_vm._v(" "),_c('div',{staticClass:"btns"},[_c('button',{on:{"click":function($event){_vm.selected(2,'groups')}}},[_c('img',{attrs:{"src":"../img/lights.png"}}),_c('span',[_vm._v("All Lights")])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(4,'lights')}}},[_c('img',{attrs:{"src":"../img/light.png"}}),_c('span',[_vm._v("Light 1")])])])]),_vm._v(" "),_c('div',{staticClass:"tab-pane fade",attrs:{"id":"bathroom","role":"tabpanel","aria-labelledby":"bathroom-tab"}},[_c('h1',[_vm._v("Bathroom")]),_vm._v(" "),_c('div',{staticClass:"btns"},[_c('button',{on:{"click":function($event){_vm.selected(3,'groups')}}},[_c('img',{attrs:{"src":"../img/lights.png"}}),_c('span',[_vm._v("All Lights")])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(5,'lights')}}},[_c('img',{attrs:{"src":"../img/light.png"}}),_c('span',[_vm._v("Light 1")])])])]),_vm._v(" "),_c('div',{staticClass:"tab-pane fade",attrs:{"id":"kitchen","role":"tabpanel","aria-labelledby":"kitchen-tab"}},[_c('h1',[_vm._v("Kitchen")]),_vm._v(" "),_c('div',{staticClass:"btns"},[_c('button',{on:{"click":function($event){_vm.selected(4,'groups')}}},[_c('img',{attrs:{"src":"../img/lights.png"}}),_c('span',[_vm._v("All Lights")])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(9,'lights')}}},[_c('img',{attrs:{"src":"../img/light.png"}}),_c('span',[_vm._v("Light 1")])])])]),_vm._v(" "),_c('div',{staticClass:"tab-pane fade",attrs:{"id":"hallway","role":"tabpanel","aria-labelledby":"hallway-tab"}},[_c('h1',[_vm._v("Hallway")]),_vm._v(" "),_c('div',{staticClass:"btns"},[_c('button',{on:{"click":function($event){_vm.selected(7,'groups')}}},[_c('img',{attrs:{"src":"../img/lights.png"}}),_c('span',[_vm._v("All Lights")])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(13,'lights')}}},[_c('img',{attrs:{"src":"../img/light.png"}}),_c('span',[_vm._v("Light 1")])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.selected(11,'lights')}}},[_c('img',{attrs:{"src":"../img/light.png"}}),_c('span',[_vm._v("Light 2")])])])])])]),_vm._v(" "),_c('div',{staticClass:"w-20 right-side"},[_c('h1',[_vm._v("Control Panel")]),_vm._v(" "),_c('div',{staticClass:"text-center p-2"},[_c('button',{staticClass:"btn btn-default active",attrs:{"id":"on","type":"button"},on:{"click":function($event){_vm.buttonOn()}}},[_vm._v(_vm._s(_vm.bOn))])]),_vm._v(" "),_c('div',{staticClass:"text-center p-2"},[_c('button',{staticClass:"btn btn-default",attrs:{"id":"off","type":"button"},on:{"click":function($event){_vm.buttonOff()}}},[_vm._v(_vm._s(_vm.bOff))])]),_vm._v(" "),_c('div',{staticClass:"text-center p-2"},[_c('button',{staticClass:"btn btn-default",attrs:{"id":"sat","type":"button"},on:{"click":function($event){_vm.buttonSat()}}},[_vm._v(_vm._s(_vm.bSat))])]),_vm._v(" "),_c('div',{staticClass:"text-center p-2"},[_c('button',{staticClass:"btn btn-default",attrs:{"id":"bri","type":"button"},on:{"click":function($event){_vm.buttonBri()}}},[_vm._v(_vm._s(_vm.bBri))])]),_vm._v(" "),_c('div',{staticClass:"text-center p-2"},[_c('button',{staticClass:"btn btn-default",attrs:{"id":"hue","type":"button"},on:{"click":function($event){_vm.buttonHue()}}},[_vm._v(_vm._s(_vm.bHue))])]),_vm._v(" "),_c('div',{staticClass:"text-center p-2"},[_c('button',{staticClass:"btn btn-default",attrs:{"id":"ct","type":"button"},on:{"click":function($event){_vm.buttonCt()}}},[_vm._v(_vm._s(_vm.bCt))])]),_vm._v(" "),_c('div',{staticClass:"text-center p-3"},[_c('span',[_vm._v("Brightness:")]),_vm._v(" "),_c('b-form-slider',{attrs:{"id":"bri","min":0,"max":100,"trigger-change-event":""},model:{value:(_vm.briValue),callback:function ($$v) {_vm.briValue=$$v},expression:"briValue"}})],1),_vm._v(" "),_c('div',{staticClass:"text-center p-3"},[_c('span',[_vm._v("Saturation:")]),_c('b-form-slider',{attrs:{"id":"sat","min":0,"max":100,"trigger-change-event":""},model:{value:(_vm.satValue),callback:function ($$v) {_vm.satValue=$$v},expression:"satValue"}})],1),_vm._v(" "),_c('div',{staticClass:"text-center p-3"},[_c('span',[_vm._v("Color Temperature:")]),_c('b-form-slider',{attrs:{"id":"ct","min":0,"max":100,"trigger-change-event":""},model:{value:(_vm.ctValue),callback:function ($$v) {_vm.ctValue=$$v},expression:"ctValue"}})],1),_vm._v(" "),_c('div',{staticClass:"text-center p-3 color-wheel"},[_c('span',[_vm._v("Select Color:")]),_c('choice-color',{attrs:{"colors":_vm.colors,"radius":"10em"},on:{"updateColor":_vm.updateColor}})],1),_vm._v(" "),_c('div',[(_vm.health==0)?_c('div',[_vm._v("OK")]):_vm._e(),_vm._v(" "),(_vm.health==1)?_c('div',[_vm._v("ERR")]):_vm._e(),_vm._v(" "),(_vm.health==2)?_c('div',[_vm._v("Wait")]):_vm._e()])])])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-519408fe", __vue__options__)
+    hotAPI.createRecord("data-v-468dfaa4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-519408fe", __vue__options__)
+    hotAPI.reload("data-v-468dfaa4", __vue__options__)
   }
 })()}
 },{"jquery":3,"vue":10,"vue-bootstrap-slider":7,"vue-circle-choice":8,"vue-hot-reload-api":9}]},{},[11]);
